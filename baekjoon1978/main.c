@@ -13,6 +13,7 @@ int main(void)
     int N, i;
     int arr[1000];
     int count = 0;
+    int j, k = 0;
     
     scanf("%d", &N);
     
@@ -25,12 +26,18 @@ int main(void)
     {
         if(arr[i] == 0 || arr[i] == 1)
             continue;
-        else if(arr[i] == 3)
-            count++;
-        else if(arr[i] % 2 == 0 || arr[i] % 3 == 0)
-            continue;
+        
         else
+        {
+            for(j = arr[i]; j > 0; j--)
+            {
+                if(arr[i] % j == 0)
+                    k++;
+            }
+        }
+        if(k == 2)
             count++;
+        k = 0;
     }
     
     printf("%d \n", count);
